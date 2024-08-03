@@ -11,6 +11,22 @@
     <body class="container">
         <h1 class="display-4 text-primary">{{title}}</h1>
         <p class="mt-4">{{message|safe}}</p>
+        {% comment %} フォーム送信開始 {% endcomment %}
+        <form action="{% url 'index' %}" method="POST">
+            {% csrf_token %}
+            <table class="table">
+                {{form.as_table}}
+                <tr>
+                    <th>
+                        <td>
+                            <input type = "submit" value="click" class="btn btn-primary mt-2">
+                        </td>
+                    </th>
+                </tr>
+            </table>
+        </form>
+        {% comment %} フォーム送信終了 {% endcomment %}
+
         <table class="table">
             <tr>
                 <th>ID</th>
@@ -30,7 +46,7 @@
                 </td>
                 <td>{{item.mail}}</td>
                 <td>{{item.age}}</td>
-                <td>{{item.birthday}}</td>
+                <td>{{item.birthdy}}</td>
             </tr>
             {% endfor %}
         </table>

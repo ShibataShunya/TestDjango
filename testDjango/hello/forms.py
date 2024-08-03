@@ -1,4 +1,5 @@
 from django import forms 
+from.models import Friend
 
 class HelloForm(forms.Form):
     name = forms.CharField(label='name', \
@@ -11,3 +12,8 @@ class HelloForm(forms.Form):
 class Sessionform(forms.Form):
     session = forms.CharField(label="session", \
             widget=forms.TextInput(attrs={"class":"form-control"}))
+    
+class FriendForm(forms.ModelForm):
+    class Meta:
+        model = Friend
+        fields = ['name','mail','gender','age','birthdy']
