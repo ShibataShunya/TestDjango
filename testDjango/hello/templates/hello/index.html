@@ -27,6 +27,11 @@
         </form>
         {% comment %} フォーム送信終了 {% endcomment %}
 
+        <form action="{% url 'find'%}" method="post">
+            {% csrf_token %}
+            {{findForm.as_p}}
+            <input type = "submit" value="click" class="btn btn-primary mt-2">
+        </form>
         <table class="table">
             <tr>
                 <th>ID</th>
