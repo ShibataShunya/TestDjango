@@ -1,0 +1,39 @@
+{% extends 'sns/layout.html' %}
+
+{% block title %}
+ぽすと
+{% endblock %}
+
+{% block header %}
+<h1 class="display-4 text-primary">
+    ぽすと
+</h1>
+<p class="caption">
+    ※めっせーじをとうこうします
+</p>
+{% endblock %}
+
+{% block content %}
+<table class="table mt-3">
+    <tr>
+        <th>
+            めっせーじ
+        </th>
+    </tr>
+    {% for item in contents %}
+    <tr>
+        <td>
+            <p class="fs-5 my-0">
+                {{item.content}}
+            </p>
+            <p class="text-end my-0">
+                ({{item.pub_date}})
+            </p>
+            <p class="text-end my-0 text-info">
+                ぐっど：{{item.good_count}}
+            </p>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
