@@ -21,11 +21,11 @@ root.render(
          </ul>
      </nav>
 
-   <div className='container'>
+   <div className='container mt-5'>
      <App />
      <div className='my-3 text-center'>
        <span className='font-weight-bold'>
-         <a href='/admin/logout?next=/sns/'>
+         <a href='/admin/logout/?next=/sns/'>
            [ LOGOUT ]
          </a>
        </span>

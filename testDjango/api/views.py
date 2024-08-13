@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from django.core.serializers import serialize
 from django.forms.models import model_to_dict
+from django.contrib.auth.models import User
 
 from .models import Message2,Good2
 
@@ -18,13 +18,14 @@ def index(request):
     return render(request, 'index.html')
 
 #メッセージをJSONでレスポンスする
-@login_required(login_url="/admin/login/")
+@login_required(login_url='/admin/login/')
 def msgs(request, page=1):
     msgs = Message2.objects.all()
     paginate = Paginator(msgs,page_max)
     page_items = paginate.get_page(page)
     serialized_data = serialize('json', page_items)
-    return HttpResponse(serialized_data, content_type="application/json")
+    
+    return HttpResponse(serialized_data, content_type='application/json')
 
 #ページ数を返す
 @login_required(login_url="/admin/login/")
@@ -66,11 +67,11 @@ def good(request, good_id):
     if is_good > 0:
         return HttpResponse("NG")
     else:
-        good_msg.good2_count += 1
+        good_msg.good_count += 1
         good_msg.save()
 
         good = Good2()
         good.owner = request.user
-        good.message2 = good_msg
+        good.message = good_msg
         good.save()
         return HttpResponse("OK")

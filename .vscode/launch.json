@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python デバッガー: 現在のファイル",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "C:\\007_reactとdjango\\testDjango\\manage.py",
+            "console": "integratedTerminal",
+            "args": [
+                "runserver",
+            ],
+            "django": true
+        }
+    ]
+}
